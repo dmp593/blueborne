@@ -4,6 +4,15 @@ import time
 from mcif.guesser import Guesser
 
 
+def about():
+    print(' __  __  ____ ___ _____')
+    print('|  \\/  |/ ___|_ _|  ___|')
+    print('| |\\/| | |    | || |_   ')
+    print('| |  | | |___ | ||  _|  ')
+    print('|_|  |_|\\____|___|_|    ')
+    print('\n')
+
+
 def bluetify():
     result = os.system('service bluetooth restart')
 
@@ -57,24 +66,29 @@ def raise_exit():
 
 def install_requirements():
     print('Installing... please wait')
+    os.system('apt install bluetooth libbluetooth-dev 1> /dev/null')
     os.system('pip install pybluez 1> /dev/null')
     os.system('pip install pwntools 1> /dev/null')
 
 
 menu = {
     0: {
+        'title': 'About',
+        'handler': about
+    },
+    1: {
         'title': 'Install Requirements',
         'handler': install_requirements
     },
-    1: {
+    2: {
         'title': 'Set bluetooth ON',
         'handler': bluetify
     },
-    2: {
+    3: {
         'title': 'Select bluetooth device',
         'handler': select_device
     },
-    3: {
+    4: {
         'title': 'Scan',
         'handler': scan
     },
