@@ -1,7 +1,6 @@
 import os
 import sys
 import time
-from mcif.guesser import Guesser
 
 
 def about():
@@ -31,7 +30,8 @@ def scan():
 
 
 def guess():
-    guesser = Guesser()
+    mcif = __import__('mcif.guesser', globals(), locals(), 'Guesser')
+    guesser = mcif.Guesser()
 
     try:
         tries = input('Search attempts to guess [3]: ')
@@ -93,7 +93,7 @@ menu = {
         'handler': scan
     },
     5: {
-        'title': 'Guess Vulnerabity by MAC',
+        'title': 'Guess Vulnerability by MAC',
         'handler': guess
     },
     6: {
